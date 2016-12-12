@@ -259,7 +259,7 @@ func (g *Generator) uniqueVarName() string {
 // safeName escapes unsafe characters in pkg/type name and returns a string that can be used
 // in encoder/decoder names for the type.
 func safeName(t reflect.Type) string {
-	name := t.PkgPath()
+	name := fixPkgPathVendoring(t.PkgPath())
 	if t.Name() == "" {
 		name += "anonymous"
 	} else {
